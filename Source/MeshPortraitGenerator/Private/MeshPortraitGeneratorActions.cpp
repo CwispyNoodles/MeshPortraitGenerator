@@ -35,6 +35,7 @@ void FMeshPortraitGeneratorActions::OpenAssetEditor(const TArray<UObject*>& InOb
 
 uint32 FMeshPortraitGeneratorActions::GetCategories()
 {
+	return AssetCategory;
 }
 
 #undef LOCTEXT_NAMESPACE

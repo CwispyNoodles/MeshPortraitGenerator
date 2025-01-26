@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "AssetTypeActions_Base.h"
 #include "UObject/Object.h"
-#include "MeshPortraitGeneratorActions.generated.h"
 
 /**
  * 
