@@ -3,6 +3,7 @@
 
 #include "MeshPortraitGeneratorEditorMode.h"
 
+#include "MeshPortraitGeneratorDetailsTabSummoner.h"
 #include "MeshPortraitGeneratorEditor.h"
 #include "MeshPortraitGeneratorViewportTabSummoner.h"
 
@@ -11,8 +12,9 @@ FMeshPortraitGeneratorEditorMode::FMeshPortraitGeneratorEditorMode(TSharedPtr<FM
 {
 	MeshPortraitGeneratorEditor = InEditor;
 	Tabs.RegisterFactory(MakeShared<FMeshPortraitGeneratorViewportTabSummoner>(InEditor));
+	Tabs.RegisterFactory(MakeShared<FMeshPortraitGeneratorDetailsTabSummoner>(InEditor));
 
-	TabLayout = FTabManager::NewLayout("MeshPortraitGenerator_Layout_v1")
+	TabLayout = FTabManager::NewLayout("MeshPortraitGenerator_Layout_v1.1")
 	->AddArea
 	(
 		FTabManager::NewPrimaryArea()
@@ -31,7 +33,7 @@ FMeshPortraitGeneratorEditorMode::FMeshPortraitGeneratorEditorMode(TSharedPtr<FM
 			(
 				FTabManager::NewStack()
 				->SetSizeCoefficient(0.25f)
-				->AddTab(FName(TEXT("MeshPortraitGeneratorViewportTabId")), ETabState::OpenedTab)
+				->AddTab(FName(TEXT("MeshPortraitGeneratorTabId")), ETabState::OpenedTab)
 			)
 		)
 	);

@@ -4,6 +4,7 @@
 #include "MeshPortraitGeneratorEditor.h"
 
 #include "MeshPortraitGeneratorEditorMode.h"
+#include "MeshPortraitGeneratorInstance.h"
 
 #define LOCTEXT_NAMESPACE "MeshPortraitGeneratorEditor"
 
@@ -23,6 +24,8 @@ void FMeshPortraitGeneratorEditor::InitMeshPortraitGeneratorEditor(const EToolki
 		true,
 		ObjectsToEdit
 	);
+
+	WorkingAsset = Cast<UMeshPortraitGeneratorInstance>(InObject);
 
 	AddApplicationMode(TEXT("FMeshPortraitGeneratorEditorMode"), MakeShareable(new FMeshPortraitGeneratorEditorMode(SharedThis(this))));
 	SetCurrentMode(TEXT("FMeshPortraitGeneratorEditorMode"));

@@ -6,6 +6,7 @@
 #include "UObject/Object.h"
 #include "WorkflowOrientedApp/WorkflowCentricApplication.h"
 
+class UMeshPortraitGeneratorInstance;
 /**
  * 
  */
@@ -14,6 +15,11 @@ class MESHPORTRAITGENERATOR_API FMeshPortraitGeneratorEditor : public FWorkflowC
 
 public:
 	void InitMeshPortraitGeneratorEditor(const EToolkitMode::Type Mode, const TSharedPtr<class IToolkitHost>& InitToolkitHost, UObject* InObject);
+	UMeshPortraitGeneratorInstance* GetWorkingAsset() const { return WorkingAsset; }
+
+private:
+	UMeshPortraitGeneratorInstance* WorkingAsset = nullptr;
+	
 public: // FAssetEditorToolkit interface
 	virtual void RegisterTabSpawners(const TSharedRef<FTabManager>& InTabManager) override;
 	virtual FName GetToolkitFName() const override;

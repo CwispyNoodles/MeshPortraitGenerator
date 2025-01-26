@@ -3,13 +3,21 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "WorkflowOrientedApp/WorkflowTabFactory.h"
 
+class FMeshPortraitGeneratorEditor;
 /**
  * 
  */
-class MESHPORTRAITGENERATOR_API MeshPortraitGeneratorDetailsTabSummoner
+class FMeshPortraitGeneratorDetailsTabSummoner : public FWorkflowTabFactory
 {
 public:
-	MeshPortraitGeneratorDetailsTabSummoner();
-	~MeshPortraitGeneratorDetailsTabSummoner();
+	FMeshPortraitGeneratorDetailsTabSummoner(TSharedPtr<FMeshPortraitGeneratorEditor> InEditor);
+
+private:
+	TWeakPtr<FMeshPortraitGeneratorEditor> MeshPortraitGeneratorEditor;
+
+public: // FWorkflowTabFactory Interface
+	virtual TSharedRef<SWidget> CreateTabBody(const FWorkflowTabSpawnInfo& Info) const override;
+	virtual FText GetTabToolTipText(const FWorkflowTabSpawnInfo& Info) const override;
 };
