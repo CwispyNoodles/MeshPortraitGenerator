@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
 #include "WorkflowOrientedApp/WorkflowCentricApplication.h"
-#include "MeshPortraitGeneratorEditor.generated.h"
 
 /**
  * 

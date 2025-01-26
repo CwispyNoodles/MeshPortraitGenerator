@@ -10,7 +10,7 @@ class FMeshPortraitGeneratorEditor;
 /**
  * 
  */
-class FMeshPortraitGeneratorEditorMode : FApplicationMode
+class FMeshPortraitGeneratorEditorMode : public FApplicationMode
 {
 public:
 	FMeshPortraitGeneratorEditorMode(TSharedPtr<FMeshPortraitGeneratorEditor> InEditor);

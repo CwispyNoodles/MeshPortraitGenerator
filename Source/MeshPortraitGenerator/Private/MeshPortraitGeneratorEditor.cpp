@@ -3,6 +3,8 @@
 
 #include "MeshPortraitGeneratorEditor.h"
 
+#include "MeshPortraitGeneratorEditorMode.h"
+
 #define LOCTEXT_NAMESPACE "MeshPortraitGeneratorEditor"
 
 void FMeshPortraitGeneratorEditor::InitMeshPortraitGeneratorEditor(const EToolkitMode::Type Mode,
@@ -22,7 +24,8 @@ void FMeshPortraitGeneratorEditor::InitMeshPortraitGeneratorEditor(const EToolki
 		ObjectsToEdit
 	);
 
-	
+	AddApplicationMode(TEXT("FMeshPortraitGeneratorEditorMode"), MakeShareable(new FMeshPortraitGeneratorEditorMode(SharedThis(this))));
+	SetCurrentMode(TEXT("FMeshPortraitGeneratorEditorMode"));
 }
 
 void FMeshPortraitGeneratorEditor::RegisterTabSpawners(const TSharedRef<FTabManager>& InTabManager)

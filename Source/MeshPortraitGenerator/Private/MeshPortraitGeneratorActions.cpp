@@ -3,6 +3,7 @@
 
 #include "MeshPortraitGeneratorActions.h"
 
+#include "MeshPortraitGeneratorEditor.h"
 #include "MeshPortraitGeneratorInstance.h"
 
 #define LOCTEXT_NAMESPACE "MeshPortraitGeneratorActions"
@@ -30,7 +31,16 @@ UClass* FMeshPortraitGeneratorActions::GetSupportedClass() const
 void FMeshPortraitGeneratorActions::OpenAssetEditor(const TArray<UObject*>& InObjects,
 	TSharedPtr<IToolkitHost> EditWithinLevelEditor)
 {
-	FAssetTypeActions_Base::OpenAssetEditor(InObjects, EditWithinLevelEditor);
+	EToolkitMode::Type Mode = EditWithinLevelEditor.IsValid() ? EToolkitMode::WorldCentric : EToolkitMode::Standalone;
+
+	for (auto ObjIt = InObjects.CreateConstIterator(); ObjIt; ++ObjIt)
+	{
+		if (UMeshPortraitGeneratorInstance* MeshPortraitGeneratorInstance = Cast<UMeshPortraitGeneratorInstance>(*ObjIt))
+		{
+			TSharedRef<FMeshPortraitGeneratorEditor> NewGraphEditor(new FMeshPortraitGeneratorEditor());
+			NewGraphEditor->InitMeshPortraitGeneratorEditor(Mode, EditWithinLevelEditor, MeshPortraitGeneratorInstance);
+		}
+	}
 }
 
 uint32 FMeshPortraitGeneratorActions::GetCategories()
