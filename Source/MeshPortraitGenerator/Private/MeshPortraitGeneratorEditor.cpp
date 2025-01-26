@@ -3,9 +3,26 @@
 
 #include "MeshPortraitGeneratorEditor.h"
 
+#define LOCTEXT_NAMESPACE "MeshPortraitGeneratorEditor"
+
 void FMeshPortraitGeneratorEditor::InitMeshPortraitGeneratorEditor(const EToolkitMode::Type Mode,
 	const TSharedPtr<IToolkitHost>& InitToolkitHost, UObject* InObject)
 {
+	TArray<UObject*> ObjectsToEdit;
+	ObjectsToEdit.Add(InObject);
+	
+	InitAssetEditor
+	(
+		Mode,
+		InitToolkitHost,
+		TEXT("MeshPortraitGeneratorEditor"),
+		FTabManager::FLayout::NullLayout,
+		true,
+		true,
+		ObjectsToEdit
+	);
+
+	
 }
 
 void FMeshPortraitGeneratorEditor::RegisterTabSpawners(const TSharedRef<FTabManager>& InTabManager)
@@ -15,23 +32,27 @@ void FMeshPortraitGeneratorEditor::RegisterTabSpawners(const TSharedRef<FTabMana
 
 FName FMeshPortraitGeneratorEditor::GetToolkitFName() const
 {
+	return FName("FMeshPortraitGeneratorEditor");
 }
 
 FText FMeshPortraitGeneratorEditor::GetBaseToolkitName() const
 {
+	return LOCTEXT("AppLabel", "Mesh Portrait Generator Editor");
 }
 
 FString FMeshPortraitGeneratorEditor::GetWorldCentricTabPrefix() const
 {
+	return TEXT("MeshPortraitGeneratorEditor");
 }
 
 FLinearColor FMeshPortraitGeneratorEditor::GetWorldCentricTabColorScale() const
 {
+	return FLinearColor::White;
 }
 
 FString FMeshPortraitGeneratorEditor::GetDocumentationLink() const
 {
-	return FWorkflowCentricApplication::GetDocumentationLink();
+	return TEXT("https://github.com/CwispyNoodles/MeshPortraitGenerator");
 }
 
 void FMeshPortraitGeneratorEditor::OnToolkitHostingStarted(const TSharedRef<IToolkit>& Toolkit)
@@ -43,3 +64,5 @@ void FMeshPortraitGeneratorEditor::OnToolkitHostingFinished(const TSharedRef<ITo
 {
 	FWorkflowCentricApplication::OnToolkitHostingFinished(Toolkit);
 }
+
+#undef LOCTEXT_NAMESPACE
