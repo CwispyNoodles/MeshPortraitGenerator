@@ -3,6 +3,7 @@
 
 #include "MeshPortraitGeneratorViewportTabSummoner.h"
 #include "MeshPortraitGeneratorEditor.h"
+#include "SMeshPortraitGeneratorViewport.h"
 
 #define LOCTEXT_NAMESPACE "MeshPortraitGeneratorViewportTabSummoner"
 
@@ -19,14 +20,13 @@ FMeshPortraitGeneratorViewportTabSummoner::FMeshPortraitGeneratorViewportTabSumm
 
 TSharedRef<SWidget> FMeshPortraitGeneratorViewportTabSummoner::CreateTabBody(const FWorkflowTabSpawnInfo& Info) const
 {
-	// TSharedPtr<FMeshPortraitGeneratorEditor> Editor = MeshPortraitGeneratorEditor.Pin();
-	// return SNew(SOverlay)
-	// +SOverlay::Slot()
-	// [
-	// 	SNew(SMeshPortraitGeneratorViewport)
-	// 	.EditingObject(Editor->GetWorkingAsset())
-	// ];
-	return SNew(STextBlock).Text(FText::FromString(TEXT("Test")));
+	TSharedPtr<FMeshPortraitGeneratorEditor> Editor = MeshPortraitGeneratorEditor.Pin();
+	return SNew(SOverlay)
+	+SOverlay::Slot()
+	[
+		SNew(SMeshPortraitGeneratorViewport)
+		.EditingObject(Editor->GetWorkingAsset())
+	];
 }
 
 FText FMeshPortraitGeneratorViewportTabSummoner::GetTabToolTipText(const FWorkflowTabSpawnInfo& Info) const
