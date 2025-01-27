@@ -20,6 +20,12 @@ FMeshPortraitGeneratorViewportTabSummoner::FMeshPortraitGeneratorViewportTabSumm
 TSharedRef<SWidget> FMeshPortraitGeneratorViewportTabSummoner::CreateTabBody(const FWorkflowTabSpawnInfo& Info) const
 {
 	// TSharedPtr<FMeshPortraitGeneratorEditor> Editor = MeshPortraitGeneratorEditor.Pin();
+	// return SNew(SOverlay)
+	// +SOverlay::Slot()
+	// [
+	// 	SNew(SMeshPortraitGeneratorViewport)
+	// 	.EditingObject(Editor->GetWorkingAsset())
+	// ];
 	return SNew(STextBlock).Text(FText::FromString(TEXT("Test")));
 }
 

@@ -18,7 +18,7 @@ public:
 	UMeshPortraitGeneratorInstance* GetWorkingAsset() const { return WorkingAsset; }
 
 private:
-	UMeshPortraitGeneratorInstance* WorkingAsset = nullptr;
+	TObjectPtr<UMeshPortraitGeneratorInstance> WorkingAsset = nullptr;
 	
 public: // FAssetEditorToolkit interface
 	virtual void RegisterTabSpawners(const TSharedRef<FTabManager>& InTabManager) override;
